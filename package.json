@@ -1,33 +1,40 @@
 {
-  "name": "shefi",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:AymanDev/Shefi.git",
-  "author": "AymanDev",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-    "start": "nodemon",
-    "build": "NODE_ENV=production webpack"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "dotenv-webpack": "^6.0.2",
-    "nodemon": "^2.0.7",
-    "prettier": "^2.2.1",
-    "ts-loader": "^8.0.17",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.2",
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "bufferutil": "^4.0.3",
-    "discord.js": "^12.5.1",
-    "erlpack": "^0.1.3",
-    "mongoose": "^5.11.18",
-    "utf-8-validate": "^5.0.4",
-    "zlib-sync": "^0.1.7"
-  }
+    "name": "shefi",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:AymanDev/Shefi.git",
+    "author": "AymanDev",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "start": "set NODE_ENV=development && nodemon",
+        "build": "set NODE_ENV=production && webpack"
+    },
+    "devDependencies": {
+        "@types/moment": "^2.13.0",
+        "@types/node": "^14.14.31",
+        "dotenv": "^8.2.0",
+        "dotenv-webpack": "^6.0.2",
+        "nodemon": "^2.0.7",
+        "prettier": "^2.2.1",
+        "ts-loader": "^8.0.17",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.2.2",
+        "webpack": "^5.24.2",
+        "webpack-cli": "^4.5.0",
+        "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bufferutil": "^4.0.3",
+        "cheerio": "^1.0.0-rc.5",
+        "discord.js": "^12.5.1",
+        "erlpack": "^0.1.3",
+        "logform": "^2.2.0",
+        "moment": "^2.29.1",
+        "mongoose": "^5.11.18",
+        "utf-8-validate": "^5.0.4",
+        "winston": "^3.3.3",
+        "zlib-sync": "^0.1.7"
+    }
 }
