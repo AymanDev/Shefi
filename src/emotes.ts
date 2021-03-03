@@ -23,4 +23,6 @@ class Emote {
 
 export const EMOTES = {
     VANILLA_SMUG: new Emote('vanillaSmug'),
+    LOADING: new Emote('loading'),
+    OK: new Emote('ok'),
 };

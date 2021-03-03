@@ -1,7 +1,7 @@
 import { MessageReaction, PartialUser, User } from 'discord.js';
 import { EMOTES } from './emotes';
-import { buildRule34Embed } from './messages';
 import logger from './logger';
+import { getPostFromUrl, sendPostToChannel } from './utils';
 
 const handleMessageReactionAdd = async (messageReaction: MessageReaction, user: User | PartialUser) => {
     const { message, emoji, me } = messageReaction;
@@ -17,13 +17,13 @@ const handleMessageReactionAdd = async (messageReaction: MessageReaction, user: 
 
     const embedMessage = message.embeds[0];
     const rule34Link = embedMessage.url;
-    const rule34Embed = await buildRule34Embed(rule34Link);
 
     if (!user.dmChannel) {
         await user.createDM();
     }
+    const post = await getPostFromUrl(rule34Link);
+    await sendPostToChannel(post, rule34Link, user.dmChannel);
     logger.info(`Respond to react, dm:${!!user.dmChannel}`);
-    await user.dmChannel.send(rule34Embed);
 };
 
 export default handleMessageReactionAdd;

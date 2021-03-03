@@ -2,9 +2,10 @@ import logger from './logger';
 
 require('dotenv').config();
 
-import { Client } from 'discord.js';
-import handleMessage from './messages';
+import { Client, Message } from 'discord.js';
+import onMessage from './messages';
 import handleMessageReactionAdd from './reactions';
+import { sendErrorMessage } from './utils';
 
 const client = new Client();
 
@@ -19,6 +20,10 @@ const connect = async () => {
         },
     });
     logger.info('Updated user presence');
+
+    const handleMessage = async (message: Message) => {
+        await onMessage(message).catch(sendErrorMessage(message.channel));
+    };
 
     client.on('message', handleMessage);
     client.on('messageReactionAdd', handleMessageReactionAdd);
