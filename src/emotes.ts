@@ -1,5 +1,6 @@
 import { Emoji, Guild } from 'discord.js';
-import { getEmojiGuild } from './utils';
+
+import { getEmojiGuild } from './utils/common';
 
 export const getGuildEmoteByName = (guild: Guild, emoteName: string) => {
     return guild.emojis.cache.find(e => e.name === emoteName);
@@ -25,4 +26,5 @@ export const EMOTES = {
     VANILLA_SMUG: new Emote('vanillaSmug'),
     LOADING: new Emote('loading'),
     OK: new Emote('ok'),
+    HYPER_GACHI: new Emote('hyperGachi'),
 };
