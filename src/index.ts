@@ -1,11 +1,11 @@
 import { Client, DMChannel, Message, NewsChannel, TextChannel } from 'discord.js';
 
-require('dotenv').config();
-
 import logger from './logger';
-import onMessage from './messages';
-import handleMessageReactionAdd from './reactions';
+import onMessage from './messages/messages';
+import handleMessageReactionAdd from './messages/reactions';
 import { sendErrorMessage } from './utils/discord';
+
+require('dotenv').config();
 
 const client = new Client();
 

@@ -1,10 +1,10 @@
 import { MessageReaction, PartialUser, User } from 'discord.js';
 
-import { EMOTES } from './emotes';
-import logger from './logger';
+import { EMOTES } from '../guilds/emotes';
+import logger from '../logger';
 
-import { sendPostToChannel } from './utils/discord';
-import { fetchRule34PostByUrl } from './utils/http';
+import { sendPostToChannel } from '../utils/discord';
+import { fetchRule34PostByUrl } from '../utils/http';
 
 const handleMessageReactionAdd = async (messageReaction: MessageReaction, user: User | PartialUser) => {
     const { message, emoji, me } = messageReaction;

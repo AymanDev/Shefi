@@ -1,8 +1,8 @@
 import { Emoji, Guild } from 'discord.js';
 
-import { getEmojiGuild } from './utils/common';
+import { getEmojiGuild } from '../utils/common';
 
-export const getGuildEmoteByName = (guild: Guild, emoteName: string) => {
+const getGuildEmoteByName = (guild: Guild, emoteName: string) => {
     return guild.emojis.cache.find(e => e.name === emoteName);
 };
 
