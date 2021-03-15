@@ -1,5 +1,4 @@
 import { CommandHandler } from '../types';
-import registerCommand from './factory';
 
 const handler: CommandHandler = async message => {
     await message.channel.send(
@@ -7,4 +6,4 @@ const handler: CommandHandler = async message => {
     );
 };
 
-registerCommand('about', handler);
+export default handler;

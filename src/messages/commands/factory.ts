@@ -1,3 +1,4 @@
+import logger from '../../logger';
 import { CommandHandler } from '../types';
 
 const COMMANDS_MAP = new Map<string, Command>();
@@ -21,7 +22,9 @@ const registerCommand = (name: string, handler: CommandHandler) => {
         throw new Error(`Command with name ${name} already exists!`);
     }
 
-    COMMANDS_MAP.set(name, new Command(name, handler));
+    const command = new Command(name, handler);
+    COMMANDS_MAP.set(name, command);
+    return command;
 };
 
 /**
@@ -29,11 +32,34 @@ const registerCommand = (name: string, handler: CommandHandler) => {
  * @param name Name of the command excluding prefix
  * @returns {CommandHandler} Function for handling command
  */
-export const getCommand = (name: string) => {
+const getCommand = (name: string) => {
     if (!COMMANDS_MAP.has('name')) {
         return null;
     }
     return COMMANDS_MAP.get(name);
+};
+
+/**
+ * This is primary tool for getting commands if they exists
+ *
+ * ?? This function dynamically load commands if they exist in proper directory and cache them
+ *
+ * @param name
+ * @returns
+ */
+export const getOrCreateCommand = async (name: string): Promise<Command> => {
+    const existingCommand = getCommand(name);
+    if (existingCommand) {
+        return existingCommand;
+    }
+
+    try {
+        const handler = await import(`./${name}`);
+        return registerCommand(name, handler.default);
+    } catch (e) {
+        logger.error(e);
+        return null;
+    }
 };
 
 export default registerCommand;

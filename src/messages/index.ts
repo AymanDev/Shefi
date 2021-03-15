@@ -5,7 +5,7 @@ import { EMOTES } from '../guilds/emotes';
 import client from '../index';
 import { sendPostToChannel } from '../utils/discord';
 import { fetchRule34PostByUrl } from '../utils/http';
-import { getCommand } from './commands/factory';
+import { getOrCreateCommand } from './commands/factory';
 
 const onMessage = async (message: Message) => {
     const { content, author, cleanContent } = message;
@@ -28,8 +28,10 @@ const onMessage = async (message: Message) => {
     }
 
     const commandName = content.replace(COMMAND_PREFIX, '');
-    const { handler } = getCommand(commandName);
-    await handler(message);
+    const command = await getOrCreateCommand(commandName);
+    if (command) {
+        await command.handler(message);
+    }
 };
 
 export const handleRule34 = async (message: Message) => {

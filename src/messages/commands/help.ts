@@ -1,6 +1,5 @@
 import { EMOTES } from '../../guilds/emotes';
 import { CommandHandler } from '../types';
-import registerCommand from './factory';
 
 const handler: CommandHandler = async message => {
     await message.channel.send(
@@ -13,4 +12,4 @@ const handler: CommandHandler = async message => {
     );
 };
 
-registerCommand('help', handler);
+export default handler ;

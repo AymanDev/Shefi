@@ -1,7 +1,7 @@
 import { Client, DMChannel, Message, NewsChannel, TextChannel } from 'discord.js';
 
 import logger from './logger';
-import onMessage from './messages/messages';
+import onMessage from './messages';
 import handleMessageReactionAdd from './messages/reactions';
 import { sendErrorMessage } from './utils/discord';
 
@@ -10,6 +10,7 @@ require('dotenv').config();
 const client = new Client();
 
 const connect = async () => {
+    logger.info('Connecting to Discord API...');
     await client.login(process.env.TOKEN);
     logger.info('Bot connected to Discord API');
 

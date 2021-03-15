@@ -1,10 +1,9 @@
+import { handleRule34 } from '../';
 import client from '../..';
 import { HTTPS_REGEX, RULE34_DETERMINATION } from '../../consts';
 import { EMOTES } from '../../guilds/emotes';
 import logger from '../../logger';
-import { handleRule34 } from '../messages';
 import { CommandHandler } from '../types';
-import registerCommand from './factory';
 
 const handler: CommandHandler = async message => {
     const { channel } = message;
@@ -46,4 +45,4 @@ const handler: CommandHandler = async message => {
     await finishMessage.delete({ timeout: 5000 });
 };
 
-registerCommand('convert', handler)
+export default handler;
