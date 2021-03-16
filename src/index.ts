@@ -7,11 +7,18 @@ import { sendErrorMessage } from './utils/discord';
 
 require('dotenv').config();
 
+const { TOKEN, CREATOR_ID, EMOJI_GUILD_ID } = process.env;
+
+if (!TOKEN || !CREATOR_ID || !EMOJI_GUILD_ID) {
+    logger.error('Provide TOKEN, CREATOR_ID and EMOJI_GUILD_ID values for environment');
+    process.exit();
+}
+
 const client = new Client();
 
 const connect = async () => {
     logger.info('Connecting to Discord API...');
-    await client.login(process.env.TOKEN);
+    await client.login(TOKEN);
     logger.info('Bot connected to Discord API');
 
     await client.user.setPresence({
