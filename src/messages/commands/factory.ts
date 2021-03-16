@@ -30,10 +30,10 @@ const registerCommand = (name: string, handler: CommandHandler) => {
 /**
  * Use this for getting commands, but be aware of the moment of commands creation to avoid null return
  * @param name Name of the command excluding prefix
- * @returns {CommandHandler} Function for handling command
+ * @returns {Command} Command class with info about command and handler
  */
 const getCommand = (name: string) => {
-    if (!COMMANDS_MAP.has('name')) {
+    if (!COMMANDS_MAP.has(name)) {
         return null;
     }
     return COMMANDS_MAP.get(name);
@@ -54,6 +54,7 @@ export const getOrCreateCommand = async (name: string): Promise<Command> => {
     }
 
     try {
+        logger.info(`Trying dynamically load command ${name}`);
         const handler = await import(`./${name}`);
         return registerCommand(name, handler.default);
     } catch (e) {

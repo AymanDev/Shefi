@@ -1,3 +1,3 @@
 import { Message } from 'discord.js';
 
-export type CommandHandler = (message: Message) => Promise<void>;
+export type CommandHandler = (message: Message, clearedContent: string) => Promise<void>;

@@ -27,10 +27,11 @@ const onMessage = async (message: Message) => {
         return;
     }
 
-    const commandName = content.replace(COMMAND_PREFIX, '');
+    const clearedContent = content.replace(COMMAND_PREFIX, '');
+    const commandName = clearedContent.split(' ')[0];
     const command = await getOrCreateCommand(commandName);
     if (command) {
-        await command.handler(message);
+        await command.handler(message, clearedContent);
     }
 };
 

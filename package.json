@@ -1,14 +1,14 @@
 {
     "name": "shefi",
     "version": "1.0.0",
-    "main": "index.js",
     "repository": "git@github.com:AymanDev/Shefi.git",
     "author": "AymanDev",
     "license": "MIT",
     "private": false,
+    "main": "./src/index.ts",
     "scripts": {
         "start": "set NODE_ENV=development && nodemon",
-        "build": "set NODE_ENV=production && webpack"
+        "build": "webpack --env NODE_ENV=production"
     },
     "devDependencies": {
         "@types/moment": "^2.13.0",
@@ -22,7 +22,8 @@
         "typescript": "^4.2.2",
         "webpack": "^5.24.2",
         "webpack-cli": "^4.5.0",
-        "webpack-dev-server": "^3.11.2"
+        "webpack-dev-server": "^3.11.2",
+        "webpack-node-externals": "^2.5.2"
     },
     "dependencies": {
         "axios": "^0.21.1",
